@@ -12,6 +12,12 @@ nix-env -iA \
 	nixpkgs.gnumake \
 	nixpkgs.gcc \
 
+# stow dotfiles
+stow git
+stow nvim
+stow tmux
+stow zsh
+
 # add zsh as a login shell
 command -v zsh | sudo tee -a /etc/shells
 
