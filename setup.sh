@@ -1,6 +1,6 @@
 # download packages info and upgrade packages
-# sudo add-apt-repository ppa:neovim-ppa/stable
-# sudo apt update && sudo apt upgrade
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt update && sudo apt upgrade
 
 # install packages
 sudo apt install \
@@ -14,6 +14,7 @@ sudo apt install \
     python3-pip \
 
 # install linting tools
+pip install pip --upgrade
 pip install pylint flake8 black
 sudo apt install libxml2-utils
 echo "export PATH=$PATH:$HOME/.local/bin:$PATH" >> $HOME/.bashrc
@@ -27,6 +28,17 @@ stow tmux
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # TODO: install plugins automatically
 
+# install GPIO libraries
+sudo apt install rpi.gpio-common
+pip install gpiozero RPi.GPIO
+sudo adduser "${USER}" dialout  # optional
+
+# give permissions to spi and gpio
+sudo cp 90-gpio-spi.rules /etc/udev/rules.d/
+sudo groupadd -f --system gpio
+sudo usermod -aG gpio ubuntu
+sudo groupadd -f --system spi
+sudo usermod -aG spi ubuntu
 ## install nerd-fonts
 #mkdir -p $HOME/.local/share/fonts/NerdFonts/
 #cd $HOME/.local/share/fonts/NerdFonts/
