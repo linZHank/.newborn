@@ -39,6 +39,11 @@ sudo groupadd -f --system gpio
 sudo usermod -aG gpio ubuntu
 sudo groupadd -f --system spi
 sudo usermod -aG spi ubuntu
+
+# setup static ip
+sudo cp 50-cloud-init.yaml /etc/netplan/
+sudo vim /etc/netplan/50-cloud-init.yaml # edit configs according to your need
+sudo netplan apply
 ## install nerd-fonts
 #mkdir -p $HOME/.local/share/fonts/NerdFonts/
 #cd $HOME/.local/share/fonts/NerdFonts/
