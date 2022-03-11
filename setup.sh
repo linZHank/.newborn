@@ -59,4 +59,3 @@ sudo vim /etc/netplan/50-cloud-init.yaml # edit configs according to your need
 sudo netplan apply
 
 # reboot
-reboot
