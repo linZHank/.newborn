@@ -14,6 +14,7 @@ sudo apt install -y \
     python3-pip \
 
 # stow dotfiles
+stow zsh
 stow nvim
 stow git
 stow tmux
@@ -37,7 +38,6 @@ curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/ner
 curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
 
 # install GPIO libraries
-cd $HOME/.newborn
 sudo apt install rpi.gpio-common
 pip install pip --upgrade
 pip install gpiozero RPi.GPIO
@@ -66,6 +66,7 @@ eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
 # setup static ip
+cd $HOME/.newborn
 sudo cp 50-cloud-init.yaml /etc/netplan/
 sudo vim /etc/netplan/50-cloud-init.yaml # edit configs according to your need
 sudo netplan apply
