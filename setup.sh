@@ -60,9 +60,10 @@ echo "export _colcon_cd_root=/opt/ros/galactic/" >> ~/.zshrc
 echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.zshrc
 
 # install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-source ~/.bashrc
-nvm install v16.14.0 # Gallium 
+curl -fsSL https://fnm.vercel.app/install | bash
+export PATH=$HOME/.fnm:$PATH
+eval "$(fnm env --use-on-cd)"
+fnm install v16.14.0
 
 # setup static ip
 sudo cp 50-cloud-init.yaml /etc/netplan/
