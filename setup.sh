@@ -21,7 +21,7 @@ echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 echo "export _colcon_cd_root=/opt/ros/galactic/" >> ~/.bashrc
 echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
 
-# install GPIO libraries
+# setup dev rules
 cd $HOME/setup_new_pi
 sudo apt install rpi.gpio-common
 pip install pip --upgrade
@@ -32,6 +32,7 @@ sudo groupadd -f --system gpio
 sudo usermod -aG gpio ubuntu
 sudo groupadd -f --system spi
 sudo usermod -aG spi ubuntu
+# TODO: config picamera
 
 # setup static ip
 sudo cp 50-cloud-init.yaml /etc/netplan/
