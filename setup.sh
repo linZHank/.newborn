@@ -18,6 +18,12 @@ stow nvim
 stow git
 stow tmux
 
+# add zsh as a login shell
+command -v zsh | sudo tee -a /etc/shells
+
+# use zsh as default shell
+sudo chsh -s $(which zsh) $USER
+
 # install nerd-fonts
 mkdir -p $HOME/.local/share/fonts/NerdFonts/
 cd $HOME/.local/share/fonts/NerdFonts/
