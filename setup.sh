@@ -7,6 +7,7 @@ sudo apt install \
     curl \
     build-essential \
     git \
+    zsh \
     neovim \
     stow \
     python3-dev \
