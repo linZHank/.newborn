@@ -6,6 +6,7 @@ sudo apt upgrade -y
 sudo apt install -y \
     curl \
     build-essential \
+    zsh \
     git \
     neovim \
     stow \
@@ -16,6 +17,12 @@ sudo apt install -y \
 stow nvim
 stow git
 stow tmux
+
+# add zsh as a login shell
+command -v zsh | sudo tee -a /etc/shells
+
+# use zsh as default shell
+sudo chsh -s $(which zsh) $USER
 
 # install nerd-fonts
 mkdir -p $HOME/.local/share/fonts/NerdFonts/
