@@ -59,7 +59,7 @@ echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.zshrc
 echo "export _colcon_cd_root=/opt/ros/galactic/" >> ~/.zshrc
 echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.zshrc
 
-# install nvm
+# install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
