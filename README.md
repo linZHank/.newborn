@@ -1,5 +1,9 @@
 # Setup New RPi
-This repo contains a shell script to help you quickly setup a Raspberry Pi (3/4) with ROS Galactic.
+This repo contains a [shell script](https://raw.githubusercontent.com/linzhangUCA/setup_new_pi/main/setup.sh) to help you quickly setup a Raspberry Pi (3/4), including:
+- install necessary packages
+- setup develop rules for using GPIO, SPI, etc..
+- install ROS Galactic
+- Config static IP address
 
 # Pre-requisites
 - Your RPi is supposed running a **64-bit** Ubuntu Server 20.04.
