@@ -1,7 +1,3 @@
-# install ros-galactic, comment next 2 lines if do not want ros
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
 # download packages info and upgrade packages
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt upgrade -y
@@ -16,7 +12,6 @@ sudo apt install -y \
     stow \
     python3-dev \
     python3-pip \
-    ros2-galactic-ros-base # comment this if ros not wanted
 
 # stow dotfiles
 stow zsh
@@ -62,5 +57,16 @@ sudo usermod -aG spi ubuntu
 sudo cp 50-cloud-init.yaml /etc/netplan/
 sudo vim /etc/netplan/50-cloud-init.yaml # edit configs according to your need
 sudo netplan apply
+
+# install ros-galactic, comment next block if ros not wanted
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo apt update
+sudo apt install -y ros2-galactic-ros-base python3-colcon-common-extensions
+echo "source /opt/ros/galactic/setup.bash" >> $HOME/.zshrc
+echo "export ROS_DOMAIN_ID=19" >> ~/.zshrc 
+echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.zshrc
+echo "export _colcon_cd_root=/opt/ros/galactic/" >> ~/.zshrc
+echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.zshrc
 
 # reboot
