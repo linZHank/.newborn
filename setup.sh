@@ -43,6 +43,7 @@ nvm install v16.14.0 # Gallium
 # install GPIO libraries
 cd $HOME/.newborn
 sudo apt install rpi.gpio-common
+pip install pip --upgrade
 pip install gpiozero RPi.GPIO
 sudo adduser "${USER}" dialout  # optional
 sudo cp 90-gpio-spi.rules /etc/udev/rules.d/
