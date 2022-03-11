@@ -1,9 +1,9 @@
 # download packages info and upgrade packages
 sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update && sudo apt upgrade
+sudo apt upgrade -y
 
 # install packages
-sudo apt install \
+sudo apt install -y \
     curl \
     build-essential \
     git \
