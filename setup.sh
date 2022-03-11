@@ -16,7 +16,7 @@ sudo apt install -y \
     stow \
     python3-dev \
     python3-pip \
-    ros2-galactic-ros-base
+    ros2-galactic-ros-base # comment this if ros not wanted
 
 # stow dotfiles
 stow zsh
