@@ -53,11 +53,11 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 sudo apt update
 sudo apt install -y ros-galactic-ros-base python3-colcon-common-extensions
-echo "source /opt/ros/galactic/setup.bash" >> $HOME/.bashrc
-echo "export ROS_DOMAIN_ID=19" >> ~/.bashrc 
-echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
-echo "export _colcon_cd_root=/opt/ros/galactic/" >> ~/.bashrc
-echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
+echo "source /opt/ros/galactic/setup.zsh" >> $HOME/.zshrc
+echo "export ROS_DOMAIN_ID=19" >> ~/.zshrc 
+echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.zshrc
+echo "export _colcon_cd_root=/opt/ros/galactic/" >> ~/.zshrc
+echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.zshrc
 
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
