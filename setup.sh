@@ -5,6 +5,7 @@ sudo apt upgrade -y
 # install packages
 sudo apt install -y \
     curl \
+    unzip \
     build-essential \
     zsh \
     git \
