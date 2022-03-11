@@ -1,3 +1,7 @@
+# install ros-galactic, comment next 2 lines if do not want ros
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
 # download packages info and upgrade packages
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt upgrade -y
@@ -12,6 +16,7 @@ sudo apt install -y \
     stow \
     python3-dev \
     python3-pip \
+    ros2-galactic-ros-base
 
 # stow dotfiles
 stow zsh
