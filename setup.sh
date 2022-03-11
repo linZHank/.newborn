@@ -41,11 +41,6 @@ sudo usermod -aG gpio ubuntu
 sudo groupadd -f --system spi
 sudo usermod -aG spi ubuntu
 
-# setup static ip
-sudo cp 50-cloud-init.yaml /etc/netplan/
-sudo vim /etc/netplan/50-cloud-init.yaml # edit configs according to your need
-sudo netplan apply
-
 # install ros-galactic, comment next block if ros not wanted
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
@@ -61,5 +56,10 @@ echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.b
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 source ~/.bashrc
 nvm install v16.14.0 # Gallium 
+
+# setup static ip
+sudo cp 50-cloud-init.yaml /etc/netplan/
+sudo vim /etc/netplan/50-cloud-init.yaml # edit configs according to your need
+sudo netplan apply
 
 # reboot
