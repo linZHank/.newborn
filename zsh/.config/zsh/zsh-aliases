@@ -4,6 +4,7 @@
 # alias g='lazygit'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias nvimrc='nvim ~/.config/nvim/'
+alias vim='nvim'
 
 # alias lvim='nvim -u ~/.local/share/lunarvim/lvim/init.lua --cmd "set runtimepath+=~/.local/share/lunarvim/lvim"'
 
@@ -28,6 +29,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # easier to read disk
+alias ls='ls -al'
 alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
 
