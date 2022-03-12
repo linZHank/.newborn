@@ -29,3 +29,10 @@ sudo chsh -s $(which zsh) $USER
 # install nerd fonts
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
+
+# install node version manager
+curl -fsSL https://fnm.vercel.app/install | bash
+export PATH=$HOME/.fnm:$PATH
+eval "$(fnm env --use-on-cd)"
+fnm install v16.14.0
+
