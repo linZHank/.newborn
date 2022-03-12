@@ -11,9 +11,9 @@ brew install \
     fzf \
     stow \
     bat \
+    pyenv \
  
 # stow dotfiles
-stow x
 stow alacritty
 stow zsh
 stow nvim
