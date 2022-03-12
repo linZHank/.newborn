@@ -24,29 +24,29 @@ comment.setup(
     ---@type table
     toggler = {
         ---Line-comment toggle keymap
-        line = 'ccc',
+        line = '<leader>cc',
         ---Block-comment toggle keymap
-        block = 'cbc',
+        block = '<leader>bc',
     },
 
     ---LHS of operator-pending mappings in NORMAL + VISUAL mode
     ---@type table
     opleader = {
         ---Line-comment keymap
-        line = 'cc',
+        line = '<leader>c',
         ---Block-comment keymap
-        block = 'cb',
+        block = '<leader>b',
     },
 
     ---LHS of extra mappings
     ---@type table
     extra = {
         ---Add comment on the line above
-        above = 'ccO',
+        above = '<leader>cO',
         ---Add comment on the line below
-        below = 'cco',
+        below = '<leader>co',
         ---Add comment at the end of line
-        eol = 'ccA',
+        eol = '<leader>cA',
     },
 
     ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode

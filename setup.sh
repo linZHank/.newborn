@@ -36,3 +36,4 @@ export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
+# TODO: setup pyenv
