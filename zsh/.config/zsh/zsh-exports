@@ -9,7 +9,7 @@ export MANWIDTH=999
 # export PATH=$HOME/.local/share/go/bin:$PATH
 # export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.fnm:$PATH
-eval "$(fnm env --use-on-cd)"
+eval "$(fnm env)"
 # export PATH="$PATH:./node_modules/.bin"
 # eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
@@ -29,4 +29,15 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# ros galactic
+source /opt/ros/galactic/setup.zsh
+export ROS_DOMAIN_ID=111
+source /usr/share/colcon_cd/function/colcon_cd.sh
+export _colcon_cd_root=/opt/ros/galactic/
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+export LC_NUMERIC="en_US.UTF-8"
+eval "$(register-python-argcomplete3 ros2)"
+eval "$(register-python-argcomplete3 colcon)"
+
 
