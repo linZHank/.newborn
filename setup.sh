@@ -4,6 +4,7 @@ sudo dnf upgrade
 # install packages
 sudo dnf groupinstall @development-tools @development-libraries
 sudo dnf install \
+    curl \
     zsh \
     git \
     neovim \
@@ -11,7 +12,6 @@ sudo dnf install \
     stow \
 
 # stow dotfiles
-stow x
 stow zsh
 stow nvim
 stow git
@@ -34,6 +34,12 @@ curl -fLo "Hack Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd
 curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
 curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+
+# install node version manager
+curl -fsSL https://fnm.vercel.app/install | bash
+export PATH=$HOME/.fnm:$PATH
+eval "$(fnm env --use-on-cd)"
+fnm install v16.14.0
 
 # TODO: install nvidia driver
 
