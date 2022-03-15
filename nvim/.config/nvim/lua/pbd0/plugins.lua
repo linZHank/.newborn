@@ -44,7 +44,11 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "kyazdani42/nvim-tree.lua"
+  use "kyazdani42/nvim-tree.lua" -- File explorer
+  use "numToStr/Comment.nvim"
+  use "lewis6991/gitsigns.nvim"
+  use "windwp/nvim-autopairs"
+  use "akinsho/toggleterm.nvim"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -68,6 +72,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
