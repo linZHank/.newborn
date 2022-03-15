@@ -42,6 +42,19 @@ eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
 # install pyenv
+sudo dnf install \
+    make \
+    gcc \
+    zlib-devel \
+    bzip2 \
+    bzip2-devel \
+    readline-devel \
+    sqlite \
+    sqlite-devel \
+    openssl-devel \
+    tk-devel \
+    libffi-devel \
+    xz-devel
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 cd ~/.pyenv
 git fetch
