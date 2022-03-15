@@ -41,6 +41,13 @@ export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
+# install pyenv
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+cd ~/.pyenv
+git fetch
+git checkout v2.2.4
+src/config && make -C src
+
 # TODO: install nvidia driver
 
 # TODO: install conda
