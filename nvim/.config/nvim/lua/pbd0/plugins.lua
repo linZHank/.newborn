@@ -47,6 +47,8 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-tree.lua" -- File explorer
   use "numToStr/Comment.nvim"
   use "lewis6991/gitsigns.nvim"
+  use "windwp/nvim-autopairs"
+  use "akinsho/toggleterm.nvim"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out

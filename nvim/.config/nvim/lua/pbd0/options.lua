@@ -32,7 +32,7 @@ local options = {
   writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   cursorline = true,                       -- highlight the current line
   termguicolors = true,                    -- set term gui colors (most terminals support this)
-  -- guifont = "monospace:h17",               -- the font used in graphical neovim applications
+  guifont = "monospace:h17",               -- the font used in graphical neovim applications
 }
 
 vim.opt.shortmess:append "c"
