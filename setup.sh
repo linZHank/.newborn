@@ -1,5 +1,6 @@
 # download packages info and upgrade packages
-sudo add-apt-repository ppa:neovim-ppa/stable
+sudo add-apt-repository ppa:neovim-ppa/stable  
+sudo add-apt-repository ppa:aslatter/ppa  # alacritty
 sudo apt upgrade -y
 
 # install packages
