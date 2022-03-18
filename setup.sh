@@ -8,6 +8,7 @@ sudo apt install \
     curl \
     unzip \
     build-essential \
+    alacritty \
     zsh \
     git \
     neovim \

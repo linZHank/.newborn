@@ -17,7 +17,7 @@ nightfox.setup({
         dim_inactive = false,   -- Non focused panes set to alternative background
         styles = {              -- Style to be applied to different syntax groups
             comments = "italic",
-            functions = "None",
+            functions = "italic, bold",
             keywords = "bold",
             numbers = "NONE",
             strings = "NONE",
@@ -36,5 +36,5 @@ nightfox.setup({
 })
 
 -- setup must be called before loading
-vim.cmd "colorscheme nordfox"
+vim.cmd("colorscheme nordfox")
 
