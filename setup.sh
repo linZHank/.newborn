@@ -12,6 +12,7 @@ brew install \
     stow \
     bat \
     pyenv \
+    ripgrep \
  
 # stow dotfiles
 stow alacritty
