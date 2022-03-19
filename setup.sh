@@ -54,3 +54,9 @@ eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
 # TODO: install nvidia driver and cuda
+
+# install linting, formatting tools
+pip install pyright flake8 black  # python
+sudo apt install libxml2-utils tidy  # xml
+npm install -g markdownlint-cli  # markdown
+
