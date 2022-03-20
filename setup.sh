@@ -37,4 +37,7 @@ export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
-# TODO: setup pyenv
+# install linters, formatters
+pip install flake8 black
+brew install tidy-html5
+npm install -g markdownlint-cli
