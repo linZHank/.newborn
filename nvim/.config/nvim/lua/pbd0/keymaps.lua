@@ -82,4 +82,4 @@ keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Null-ls
--- keymap("n", "<leader>f", ":Format<cr>", opts)
+keymap("n", "<leader>F", ":Format<cr>", opts)

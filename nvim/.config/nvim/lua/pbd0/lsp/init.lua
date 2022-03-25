@@ -5,4 +5,5 @@ end
 
 require("pbd0.lsp.installer")
 require("pbd0.lsp.handlers").setup()
+require("pbd0.lsp.null-ls")
 
