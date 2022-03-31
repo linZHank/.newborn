@@ -1,8 +1,6 @@
 # download packages info and upgrade packages
 sudo add-apt-repository ppa:neovim-ppa/stable  
 sudo add-apt-repository ppa:aslatter/ppa  # alacritty
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
-sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
 sudo apt upgrade -y
 
 # install packages
@@ -51,7 +49,9 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-a
 sudo apt update
 sudo apt install -y ros-galactic-ros-base python3-colcon-common-extensions
 
-# TODO: install nvidia driver and cuda
+# install nvidia driver and cuda
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
 sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
 sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
 sudo apt update
@@ -86,7 +86,11 @@ sudo apt install -y \
     libxmlsec1-dev \
     libffi-dev \
     liblzma-dev \
-curl https://pyenv.run | zsh
+curl https://pyenv.run | bash
+
+# install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ./Miniconda3-latest-Linux-x86_64.sh
 
 # install linting, formatting tools
 pip install pyright flake8 black  # python
