@@ -1,5 +1,4 @@
 # download packages info and upgrade packages
-sudo add-apt-repository ppa:neovim-ppa/stable  
 sudo add-apt-repository ppa:aslatter/ppa  # alacritty
 sudo apt upgrade -y
 
@@ -17,6 +16,28 @@ sudo apt install -y \
     stow \
     python3-dev \
     python3-pip \
+
+# install nvim
+wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
+sudo apt install ./nvim-linux64.deb
+
+# install pyenv
+sudo apt install -y \
+    libssl-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    wget \
+    llvm \
+    libncursesw5-dev \
+    xz-utils \
+    tk-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    libffi-dev \
+    liblzma-dev \
+curl https://pyenv.run | bash
 
 # add zsh as a login shell
 command -v zsh | sudo tee -a /etc/shells
@@ -45,39 +66,34 @@ curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasi
 
 # install ros-humble, comment next block if ros not wanted
 
-# install nvidia driver and cuda
-
 # install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
-# install pyenv
-sudo apt install -y \
-    libssl-dev \
-    zlib1g-dev \
-    libbz2-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    wget \
-    llvm \
-    libncursesw5-dev \
-    xz-utils \
-    tk-dev \
-    libxml2-dev \
-    libxmlsec1-dev \
-    libffi-dev \
-    liblzma-dev \
-curl https://pyenv.run | bash
-
-# install conda
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash ./Miniconda3-latest-Linux-x86_64.sh
-
 # install linting, formatting tools
-pip install pyright flake8 black  # python
+pip install pip pyright flake8 black --upgrade # python
 sudo apt install libxml2-utils tidy  # xml
 npm install -g markdownlint-cli  # markdown
 
+# install nvidia driver and cuda
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/3bf863cc.pub
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/ /"
+sudo apt update
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2204/x86_64/nvidia-driver-515_515.48.07-0ubuntu1_amd64.deb
+sudo apt install ./nvidia-driver-515_515.48.07-0ubuntu1_amd64.deb
+
+# install conda, cuda and tf
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ./Miniconda3-latest-Linux-x86_64.sh
+conda create --name tensorflow python=3.9
+conda activate tf
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+pip install tensorflow
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+
 # restart computer
+echo "you may now restart your computer"
