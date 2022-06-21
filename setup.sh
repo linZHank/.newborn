@@ -66,7 +66,8 @@ stow tmux
 command -v zsh | sudo tee -a /etc/shells
 
 # use zsh as default shell
-sudo lchsh -s $(which zsh) $USER
+sudo dnf install util-linux-user
+sudo chsh -s $(which zsh) $USER
 
 # install nerd-fonts
 mkdir -p $HOME/.local/share/fonts/NerdFonts/
