@@ -1,17 +1,62 @@
 # dnf system upgrade
+cd $HOME
 sudo dnf upgrade
 
 # install packages
 sudo dnf groupinstall @development-tools @development-libraries
 sudo dnf install \
     curl \
+    alacritty \
     zsh \
     git \
     neovim \
     tmux \
     stow \
+    neofetch \
+    python3-devel \
+    python3-pip
+
+# install pyenv
+sudo dnf install \
+    make \
+    gcc \
+    zlib-devel \
+    bzip2 \
+    bzip2-devel \
+    readline-devel \
+    sqlite \
+    sqlite-devel \
+    openssl-devel \
+    tk-devel \
+    libffi-devel \
+    xz-devel
+    
+curl https://pyenv.run | bash
+# git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+# cd ~/.pyenv
+# git fetch
+# git checkout v2.2.4
+# src/config && make -C src
+
+# install node version manager
+curl -fsSL https://fnm.vercel.app/install | bash
+export PATH=$HOME/.fnm:$PATH
+eval "$(fnm env --use-on-cd)"
+fnm install v16.14.0
+
+# install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ./Miniconda3-latest-Linux-x86_64.sh
+
+# install linting, formatting tools
+pip install pip --upgrade
+pip install pyright flake8 black --upgrade # python
+sudo apt install -y libxml2-utils tidy  # xml
+npm install -g markdownlint-cli  # markdown
 
 # stow dotfiles
+cd $HOME/.newborn
+stow alacritty
 stow zsh
 stow nvim
 stow git
@@ -35,34 +80,11 @@ curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis
 curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
 
-# install node version manager
-curl -fsSL https://fnm.vercel.app/install | bash
-export PATH=$HOME/.fnm:$PATH
-eval "$(fnm env --use-on-cd)"
-fnm install v16.14.0
 
-# install pyenv
-sudo dnf install \
-    make \
-    gcc \
-    zlib-devel \
-    bzip2 \
-    bzip2-devel \
-    readline-devel \
-    sqlite \
-    sqlite-devel \
-    openssl-devel \
-    tk-devel \
-    libffi-devel \
-    xz-devel
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-cd ~/.pyenv
-git fetch
-git checkout v2.2.4
-src/config && make -C src
 
 # TODO: install nvidia driver
 
-# TODO: install conda
+# TODO: install tensorflow/pytorch
 
-# TODO: install tensorflow
+# restart computer
+echo "you may now restart your computer"
