@@ -40,20 +40,10 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
+  -- Crucial dependencies
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "kyazdani42/nvim-tree.lua" -- File explorer
-  use "numToStr/Comment.nvim"
-  use "lewis6991/gitsigns.nvim"
-  use "windwp/nvim-autopairs"
-  use "akinsho/toggleterm.nvim"
-
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  -- use "lunarvim/darkplus.nvim"
-  use "EdenEast/nightfox.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -73,6 +63,30 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
+  -- Telescope
+  use "nvim-telescope/telescope.nvim"
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- File explorer
+  use "kyazdani42/nvim-tree.lua" 
+  
+  -- Comment tool
+  use "numToStr/Comment.nvim"
+
+  -- Mark up git changes
+  use "lewis6991/gitsigns.nvim"
+
+  -- Auto close brackets
+  use "windwp/nvim-autopairs"
+
+  -- Use terminal inside vim
+  use "akinsho/toggleterm.nvim"
+
+  -- Colorschemes
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "EdenEast/nightfox.nvim"
+
+  -- Status display
+  use 'nvim-lualine/lualine.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
