@@ -2,6 +2,13 @@
 cd $HOME
 sudo dnf upgrade
 
+# import RPM Fusion 
+sudo dnf install -y \
+https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install \
+https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf upgrade --refresh
+
 # install packages
 sudo dnf groupinstall @development-tools @development-libraries
 sudo dnf install \
@@ -17,7 +24,7 @@ sudo dnf install \
     python3-pip
 
 # install pyenv
-sudo dnf install \
+sudo dnf install -y \
     make \
     gcc \
     zlib-devel \
@@ -32,11 +39,6 @@ sudo dnf install \
     xz-devel
     
 curl https://pyenv.run | bash
-# git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-# cd ~/.pyenv
-# git fetch
-# git checkout v2.2.4
-# src/config && make -C src
 
 # install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
@@ -81,11 +83,9 @@ curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis
 curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
 
-
-
-# TODO: install nvidia driver
-
-# TODO: install tensorflow/pytorch
+# install nvidia driver
+sudo dnf install akmod-nvidia -y
+sudo dnf install xorg-x11-drv-nvidia-cuda
 
 # restart computer
 echo "you may now restart your computer"
