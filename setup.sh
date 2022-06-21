@@ -1,5 +1,6 @@
 # dnf system upgrade
 cd $HOME
+sudo echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
 sudo dnf upgrade
 
 # import RPM Fusion 
