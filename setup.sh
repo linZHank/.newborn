@@ -1,18 +1,16 @@
 # dnf system upgrade
 cd $HOME
-sudo echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
-sudo dnf upgrade
+sudo dnf upgrade -y --refresh
 
 # import RPM Fusion 
 sudo dnf install -y \
 https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install \
+sudo dnf install -y \
 https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf upgrade --refresh
 
 # install packages
-sudo dnf groupinstall @development-tools @development-libraries
-sudo dnf install \
+sudo dnf install -y \
     curl \
     alacritty \
     zsh \
@@ -65,11 +63,12 @@ stow nvim
 stow git
 stow tmux
 
-# add zsh as a login shell
-command -v zsh | sudo tee -a /etc/shells
+# install nvidia driver
+sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
 
 # use zsh as default shell
-sudo dnf install util-linux-user
+command -v zsh | sudo tee -a /etc/shells # set zsh as login shell
+sudo dnf install -y util-linux-user
 sudo chsh -s $(which zsh) $USER
 
 # install nerd-fonts
@@ -83,10 +82,6 @@ curl -fLo "Hack Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd
 curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
 curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-
-# install nvidia driver
-sudo dnf install akmod-nvidia -y
-sudo dnf install xorg-x11-drv-nvidia-cuda
 
 # restart computer
 echo "you may now restart your computer"
