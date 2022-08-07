@@ -1,6 +1,15 @@
 # dnf system upgrade
 cd $HOME
-sudo dnf upgrade -y --refresh
+sudo dnf update
+sudo dnf group install 'Hardware Support'
+
+# install wm
+sudo dnf install -y \
+    sddm \
+    i3 \
+    rofi \
+    # nitrogen \
+    # polybar
 
 # import RPM Fusion 
 sudo dnf install -y \
@@ -24,8 +33,7 @@ sudo dnf install -y \
 
 # install pyenv
 sudo dnf install -y \
-    make \
-    gcc \
+    @development-tools \
     zlib-devel \
     bzip2 \
     bzip2-devel \
@@ -61,7 +69,9 @@ stow alacritty
 stow zsh
 stow nvim
 stow git
+stow i3
 stow tmux
+# stow x
 
 # install nvidia driver
 sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
