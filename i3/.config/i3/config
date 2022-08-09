@@ -186,3 +186,8 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# Set wallpaper
+# exec_always feh --bg-scale /home/pbd0/.newborn/wallpapers/humpback.png
+exec nitrogen --restor /home/pbd0/.newborn/wallpapers/humpback.png
+

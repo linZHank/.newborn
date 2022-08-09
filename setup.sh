@@ -8,7 +8,7 @@ sudo dnf install -y \
     sddm \
     i3 \
     rofi \
-    # nitrogen \
+    nitrogen \
     # polybar
 
 # import RPM Fusion 
