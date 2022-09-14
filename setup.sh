@@ -10,11 +10,12 @@ sudo apt install -y \
     zsh \
     git \
     neovim \
+    neofetch \
     tmux \
     stow \
     python3-dev \
     python3-pip \
-    neofetch \
+    lua5.1
 
 # install pyenv
 sudo apt install -y \
