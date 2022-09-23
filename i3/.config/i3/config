@@ -189,5 +189,6 @@ bar {
 
 # Set wallpaper
 # exec_always feh --bg-scale /home/pbd0/.newborn/wallpapers/humpback.png
-exec nitrogen --restor /home/pbd0/.newborn/wallpapers/humpback.png
+# exec_always nitrogen --restore /home/pbd0/.newborn/wallpapers/humpback_hop.jpg
+exec_always feh --bg-scale /home/pbd0/.newborn/wallpapers/humpback_hop.jpg
 
