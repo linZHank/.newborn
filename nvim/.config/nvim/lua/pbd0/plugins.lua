@@ -83,7 +83,8 @@ return packer.startup(function(use)
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "EdenEast/nightfox.nvim"
+  -- use "EdenEast/nightfox.nvim"
+  use "shaunsingh/nord.nvim"
 
   -- Status display
   use 'nvim-lualine/lualine.nvim'
