@@ -1,5 +1,6 @@
 # download packages info and upgrade packages
-sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt update
+sudo apt upgrade
 
 # install packages
 sudo apt install -y \
@@ -9,13 +10,18 @@ sudo apt install -y \
     build-essential \
     zsh \
     git \
-    neovim \
     neofetch \
     tmux \
     stow \
     python3-dev \
     python3-pip \
-    lua5.1
+    
+# Install neovim
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt install -y \
+    lua5.4 \
+    luajit \
+    neovim
 
 # install pyenv
 sudo apt install -y \
@@ -75,9 +81,9 @@ curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/ner
 curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
 
 # install conda
-cd $HOME
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
-bash ./Miniconda3-latest-Linux-aarch64.sh
+# cd $HOME
+# wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
+# bash ./Miniconda3-latest-Linux-aarch64.sh
 
 # add zsh as a login shell
 command -v zsh | sudo tee -a /etc/shells
