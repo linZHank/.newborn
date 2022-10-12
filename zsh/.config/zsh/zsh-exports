@@ -26,7 +26,6 @@ export PATH="$HOME/neovim/bin:$PATH"
 
 # gpiozero Pin Factory
 export GPIOZERO_PIN_FACTORY=pigpio
-sudo pigpiod
 
 
 # ROS Galactic
