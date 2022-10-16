@@ -3,13 +3,6 @@ cd $HOME
 sudo dnf update
 sudo dnf group install 'Hardware Support'
 
-# install wm
-sudo dnf install -y \
-    sddm \
-    i3 \
-    rofi \
-    nitrogen \
-    # polybar
 
 # import RPM Fusion 
 sudo dnf install -y \
@@ -18,18 +11,49 @@ sudo dnf install -y \
 https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf upgrade --refresh
 
+
 # install packages
 sudo dnf install -y \
     curl \
     alacritty \
     zsh \
     git \
-    neovim \
     tmux \
     stow \
     neofetch \
-    python3-devel \
-    python3-pip
+    htop \
+
+
+# install i3
+sudo dnf install -y \
+    i3 \
+    rofi \
+    nitrogen \
+    # polybar
+
+
+# install gnome desktop
+sudo dnf install -y
+    gdm \ gnome-shell \
+    gnome-terminal \
+    nautilus \
+    
+systemctl enable gdm; # Enable login using graphical interface
+systemctl set-default graphical.target; # Boot to graphical interface as default
+
+
+# install neovim
+echo "start install neovim..."
+cd $HOME
+mkdir repos && cd repos
+git clone https://github.com/neovim/neovim.git
+cd neovim
+git checkout release-0.8
+make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+make install 
+cd $HOME
+echo "end install neovim..."
+
 
 # install pyenv
 sudo dnf install -y \
@@ -47,21 +71,29 @@ sudo dnf install -y \
     
 curl https://pyenv.run | bash
 
+
 # install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
+
 # install conda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash ./Miniconda3-latest-Linux-x86_64.sh
+
 
 # install linting, formatting tools
 pip install pip --upgrade
 pip install pyright flake8 black --upgrade # python
 sudo apt install -y libxml2-utils tidy  # xml
 npm install -g markdownlint-cli  # markdown
+
+
+# install nvidia driver
+sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+
 
 # stow dotfiles
 cd $HOME/.newborn
@@ -73,8 +105,6 @@ stow i3
 stow tmux
 # stow x
 
-# install nvidia driver
-sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
 
 # use zsh as default shell
 command -v zsh | sudo tee -a /etc/shells # set zsh as login shell
