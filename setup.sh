@@ -14,6 +14,7 @@ sudo dnf upgrade --refresh
 
 # install packages
 sudo dnf install -y \
+    @development-tools \
     curl \
     alacritty \
     zsh \
@@ -33,7 +34,7 @@ sudo dnf install -y \
 
 
 # install gnome desktop
-sudo dnf install -y
+sudo dnf install -y \
     @base-x \
     gdm \ 
     gnome-shell \
@@ -44,13 +45,33 @@ sudo dnf install -y
     xdg-user-dirs-gtk \
     ffmpegthumbnailer
     
-# sudo systemctl enable gdm; # Enable login using graphical interface
-sudo systemctl set-default graphical.target; # Boot to graphical interface as default
+sudo systemctl enable gdm # Enable login using graphical interface
+sudo systemctl set-default graphical.target # Boot to graphical interface as default
+
+# Install Google-Chrome
+sudo dnf install -y fedora-workstation-repositories
+sudo dnf config-manager --set-enabled google-chrome
+sudo dnf install google-chrome-stable
 
 
 # install neovim
 echo "start install neovim..."
 cd $HOME
+sudo dnf install -y \
+    ninja-build \
+    libtool \
+    autoconf \
+    automake \
+    cmake \
+    gcc \
+    gcc-c++ \
+    make \
+    pkgconfig \
+    unzip \
+    patch \
+    gettext \
+    curl \
+    
 mkdir repos && cd repos
 git clone https://github.com/neovim/neovim.git
 cd neovim
@@ -63,7 +84,6 @@ echo "end install neovim..."
 
 # install pyenv
 sudo dnf install -y \
-    @development-tools \
     zlib-devel \
     bzip2 \
     bzip2-devel \
