@@ -34,12 +34,18 @@ sudo dnf install -y \
 
 # install gnome desktop
 sudo dnf install -y
-    gdm \ gnome-shell \
+    @base-x \
+    gdm \ 
+    gnome-shell \
     gnome-terminal \
     nautilus \
+    gnome-terminal-nautilus \
+    xdg-user-dirs \
+    xdg-user-dirs-gtk \
+    ffmpegthumbnailer
     
-systemctl enable gdm; # Enable login using graphical interface
-systemctl set-default graphical.target; # Boot to graphical interface as default
+# sudo systemctl enable gdm; # Enable login using graphical interface
+sudo systemctl set-default graphical.target; # Boot to graphical interface as default
 
 
 # install neovim
