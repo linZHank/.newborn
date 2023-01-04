@@ -26,27 +26,27 @@ sudo dnf install -y \
 
 
 # install i3
-sudo dnf install -y \
-    i3 \
-    rofi \
-    nitrogen \
-    # polybar
+# sudo dnf install -y \
+#     i3 \
+#     rofi \
+#     nitrogen \
+#     # polybar
 
 
 # install gnome desktop
-sudo dnf install -y \
-    @base-x \
-    gdm \ 
-    gnome-shell \
-    gnome-terminal \
-    nautilus \
-    gnome-terminal-nautilus \
-    xdg-user-dirs \
-    xdg-user-dirs-gtk \
-    ffmpegthumbnailer
+# sudo dnf install -y \
+#     @base-x \
+#     gdm \ 
+#     gnome-shell \
+#     gnome-terminal \
+#     nautilus \
+#     gnome-terminal-nautilus \
+#     xdg-user-dirs \
+#     xdg-user-dirs-gtk \
+#     ffmpegthumbnailer
     
-sudo systemctl enable gdm # Enable login using graphical interface
-sudo systemctl set-default graphical.target # Boot to graphical interface as default
+# sudo systemctl enable gdm # Enable login using graphical interface
+# sudo systemctl set-default graphical.target # Boot to graphical interface as default
 
 # Install Google-Chrome
 sudo dnf install -y fedora-workstation-repositories
@@ -100,7 +100,7 @@ curl https://pyenv.run | bash
 
 # install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
-export PATH=$HOME/.fnm:$PATH
+export PATH=$HOME/.local/share/fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
@@ -127,7 +127,7 @@ stow alacritty
 stow zsh
 stow nvim
 stow git
-stow i3
+# stow i3
 stow tmux
 # stow x
 
