@@ -71,6 +71,7 @@ sudo dnf install -y \
     patch \
     gettext \
     curl \
+    wl-clipboard
     
 mkdir repos && cd repos
 git clone https://github.com/neovim/neovim.git

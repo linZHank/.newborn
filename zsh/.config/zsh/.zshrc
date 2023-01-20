@@ -102,6 +102,3 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-# fnm
-export PATH="/home/pbd0/.local/share/fnm:$PATH"
-eval "`fnm env`"
