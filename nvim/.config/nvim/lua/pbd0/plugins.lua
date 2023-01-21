@@ -11,7 +11,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
-  print "Installing packer close and reopen Neovim..."
+  print '=================================='
+  print '    Plugins are being updated'
+  print '    Wait until Packer completes,'
+  print '       then restart nvim'
+  print '=================================='
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -43,7 +47,6 @@ return packer.startup(function(use)
   -- Crucial dependencies
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -60,26 +63,42 @@ return packer.startup(function(use)
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim" -- manage LSP servers, DAP servers, linters, and formatters
+  use "williamboman/mason-lspconfig.nvim" -- easier to use lspconfig with mason
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "j-hui/fidget.nvim"  -- useful status update for LSP
+  use "folke/neodev.nvim"  -- additional lua configuration
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
   -- File explorer
   use "kyazdani42/nvim-tree.lua" 
+
+  -- Highlight
+  use { -- Highlight, edit, and navigate code
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  }
+  use { -- Additional text objects via treesitter
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
   
   -- Comment tool
   use "numToStr/Comment.nvim"
 
-  -- Mark up git changes
-  use "lewis6991/gitsigns.nvim"
+  -- git
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use 'lewis6991/gitsigns.nvim'
 
   -- Auto close brackets
   use "windwp/nvim-autopairs"
 
-  -- Use terminal inside vim
-  use "akinsho/toggleterm.nvim"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
