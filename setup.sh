@@ -73,11 +73,10 @@ sudo dnf install -y \
     curl \
     wl-clipboard
     
-mkdir repos && cd repos
 git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout release-0.8
-make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+git checkout v0.8.2
+make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
 make install 
 cd $HOME
 echo "end install neovim..."
