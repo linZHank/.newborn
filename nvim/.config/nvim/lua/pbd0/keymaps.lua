@@ -3,7 +3,8 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+-- local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -20,8 +21,8 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -86,3 +87,10 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Null-ls
 keymap("n", "<leader>F", ":Format<cr>", opts)
+
+-- Diagnostic keymaps
+keymap('n', '[d', vim.diagnostic.goto_prev)
+keymap('n', ']d', vim.diagnostic.goto_next)
+keymap('n', '<leader>d', vim.diagnostic.open_float)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
