@@ -51,82 +51,40 @@ M.setup = function()
 	})
 end
 
-M.on_attach = function(_, bufnr)
-    -- NOTE: Remember that lua is a real programming language, and as such it is possible
-    -- to define small helper and utility functions so you don't have to repeat yourself
-    -- many times.
-    --
-    -- In this case, we create a function that lets us more easily define mappings specific
-    -- for LSP related items. It sets the mode, buffer and description for us each time.
-    local bind = function(keys, func, desc)
-        if desc then
-            desc = 'LSP: ' .. desc
-        end
-
-        vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
-    end
-
-    bind('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    bind('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-    bind('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    bind('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    bind('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    bind('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-    bind('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    bind('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-    -- See `:help K` for why this keymap
-    bind('K', vim.lsp.buf.hover, 'Hover Documentation')
-    bind('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-    -- Lesser used LSP functionality
-    bind('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    bind('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    bind('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    bind('<leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, '[W]orkspace [L]ist Folders')
-
-    -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-        vim.lsp.buf.format()
-    end, { desc = 'Format current buffer with LSP' })
+local function lsp_keymaps(bufnr)
+	local opts = { noremap = true, silent = true }
+	local keymap = vim.api.nvim_buf_set_keymap
+	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+	keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
+	keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+	keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+	keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+	keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
--- local function lsp_keymaps(bufnr)
--- 	local opts = { noremap = true, silent = true }
--- 	local keymap = vim.api.nvim_buf_set_keymap
--- 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
--- 	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
--- 	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
--- 	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
--- 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
--- 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
--- 	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
--- 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
--- end
 
--- M.on_attach = function(client, bufnr)
--- 	if client.name == "tsserver" then
--- 		client.server_capabilities.documentFormattingProvider = false
--- 	end
---
--- 	if client.name == "sumneko_lua" then
--- 		client.server_capabilities.documentFormattingProvider = false
--- 	end
---
--- 	lsp_keymaps(bufnr)
--- 	local status_ok, illuminate = pcall(require, "illuminate")
--- 	if not status_ok then
--- 		return
--- 	end
--- 	illuminate.on_attach(client)
--- end
+M.on_attach = function(client, bufnr)
+	if client.name == "tsserver" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+
+	if client.name == "sumneko_lua" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+
+	lsp_keymaps(bufnr)
+	local status_ok, illuminate = pcall(require, "illuminate")
+	if not status_ok then
+		return
+	end
+	illuminate.on_attach(client)
+end
 
 return M

@@ -6,4 +6,3 @@ end
 require "pbd0.lsp.mason"
 require("pbd0.lsp.handlers").setup()
 require "pbd0.lsp.null-ls"
-
