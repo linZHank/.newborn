@@ -4,6 +4,4 @@ if not status_ok then
     return
 end
 
--- setup must be called before loading
 vim.cmd("colorscheme nord")
-

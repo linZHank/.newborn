@@ -36,13 +36,14 @@ sudo apt install -y \
     luajit \
     
 cd $HOME
-mkdir repos && cd repos
-git clone https://github.com/neovim/neovim
+git clone https://github.com/neovim/neovim.git
 cd neovim
-checkout release-0.7
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-make install
-export PATH="$HOME/neovim/bin:$PATH"
+git checkout v0.8.2
+make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
+make install 
+export PATH="$HOME/.local/neovim/bin:$PATH"
+cd $HOME
+echo "end install neovim..."
 
 
 # install pyenv
@@ -67,32 +68,23 @@ curl https://pyenv.run | bash
 
 # install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
-export PATH=$HOME/.fnm:$PATH
+export PATH=$HOME/.local/share/fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
 
 
 # install linting, formatting tools
-pip install pip pyright flake8 black --upgrade # python
-sudo apt install -y libxml2-utils tidy  # xml
-npm install -g markdownlint-cli  # markdown
+# pip install pip pyright flake8 black --upgrade # python
+# sudo apt install -y libxml2-utils tidy  # xml
+# npm install -g markdownlint-cli  # markdown
 
 
 # stow dotfiles
 cd $HOME/.newborn
 stow zsh
 stow nvim
-stow git
 stow tmux
 # stow x
-
-
-# install ros-humble, comment next block if ros not wanted
-# sudo apt install -y gnupg lsb-release
-# sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-# echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-# sudo apt update
-# sudo apt install -y ros-humble-ros-base python3-colcon-common-extensions
 
 
 # install nerd-fonts
@@ -106,12 +98,6 @@ curl -fLo "Hack Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd
 curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
 curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-
-
-# install conda
-# cd $HOME
-# wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
-# bash ./Miniconda3-latest-Linux-aarch64.sh
 
 
 # add zsh as a login shell
