@@ -3,7 +3,7 @@
 	email = linzhank@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-    editor = nvim
+	editor = nvim
 [pull]
 	ff = only
 [init]

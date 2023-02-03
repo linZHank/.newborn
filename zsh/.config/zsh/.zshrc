@@ -1,5 +1,9 @@
 #!/bin/sh
 # some useful options (man zshoptions)
+HISTFILE=~/.zsh_history
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
 stty stop undef		# Disable ctrl-s to freeze terminal.
