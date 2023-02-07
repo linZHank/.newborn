@@ -87,11 +87,11 @@ stow tmux
 
 
 # install ros-humble, comment next block if ros not wanted
-# sudo apt install -y gnupg lsb-release
-# sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-# echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-# sudo apt update
-# sudo apt install -y ros-humble-ros-base python3-colcon-common-extensions
+sudo apt install -y gnupg lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo apt update
+sudo apt install -y ros-humble-ros-base python3-colcon-common-extensions
 
 
 # install nerd-fonts
@@ -108,9 +108,9 @@ curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasi
 
 
 # install conda
-# cd $HOME
-# wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
-# bash ./Miniconda3-latest-Linux-aarch64.sh
+cd $HOME
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh
 
 
 # add zsh as a login shell
