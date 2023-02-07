@@ -36,13 +36,12 @@ sudo apt install -y \
     luajit \
     
 cd $HOME
-mkdir repos && cd repos
 git clone https://github.com/neovim/neovim
 cd neovim
-checkout release-0.7
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+git checkout v0.8.2
+make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
 make install
-export PATH="$HOME/neovim/bin:$PATH"
+export PATH="$HOME/.local/neovim/bin:$PATH"
 
 
 # install pyenv
