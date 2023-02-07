@@ -34,6 +34,6 @@ export ROS_DOMAIN_ID=19
 source /usr/share/colcon_cd/function/colcon_cd.sh
 export _colcon_cd_root=/opt/ros/humble/
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
-# export LC_NUMERIC="en_US.UTF-8"
-# eval "$(register-python-argcomplete3 ros2)"
-# eval "$(register-python-argcomplete3 colcon)"
+export LC_NUMERIC="en_US.UTF-8"
+eval "$(register-python-argcomplete3 ros2)"
+eval "$(register-python-argcomplete3 colcon)"
