@@ -106,8 +106,9 @@ fnm install v16.14.0
 
 
 # install conda
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash ./Miniconda3-latest-Linux-x86_64.sh
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh
+rm -f Mambaforge-$(uname)-$(uname -m).sh
 
 
 # install linting, formatting tools
