@@ -83,19 +83,19 @@ echo "end install neovim..."
 
 
 # install pyenv
-sudo dnf install -y \
-    zlib-devel \
-    bzip2 \
-    bzip2-devel \
-    readline-devel \
-    sqlite \
-    sqlite-devel \
-    openssl-devel \
-    tk-devel \
-    libffi-devel \
-    xz-devel
-    
-curl https://pyenv.run | bash
+# sudo dnf install -y \
+#     zlib-devel \
+#     bzip2 \
+#     bzip2-devel \
+#     readline-devel \
+#     sqlite \
+#     sqlite-devel \
+#     openssl-devel \
+#     tk-devel \
+#     libffi-devel \
+#     xz-devel
+#     
+# curl https://pyenv.run | bash
 
 
 # install node version manager
@@ -127,8 +127,9 @@ stow alacritty
 stow zsh
 stow nvim
 stow git
-# stow i3
 stow tmux
+stow git
+# stow i3
 # stow x
 
 
