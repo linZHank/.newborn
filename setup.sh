@@ -47,24 +47,24 @@ echo "end install neovim..."
 
 
 # install pyenv
-sudo apt install -y \
-    libssl-dev \
-    zlib1g-dev \
-    libbz2-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    wget \
-    llvm \
-    libncursesw5-dev \
-    xz-utils \
-    tk-dev \
-    libxml2-dev \
-    libxmlsec1-dev \
-    libffi-dev \
-    liblzma-dev \
-    
-curl https://pyenv.run | bash
-
+# sudo apt install -y \
+#     libssl-dev \
+#     zlib1g-dev \
+#     libbz2-dev \
+#     libreadline-dev \
+#     libsqlite3-dev \
+#     wget \
+#     llvm \
+#     libncursesw5-dev \
+#     xz-utils \
+#     tk-dev \
+#     libxml2-dev \
+#     libxmlsec1-dev \
+#     libffi-dev \
+#     liblzma-dev \
+#     
+# curl https://pyenv.run | bash
+#
 
 # install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
@@ -85,6 +85,11 @@ stow zsh
 stow nvim
 stow tmux
 # stow x
+
+
+# install mamba-forge
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh
 
 
 # install nerd-fonts
