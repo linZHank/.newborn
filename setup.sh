@@ -88,8 +88,10 @@ stow tmux
 
 
 # install mamba-forge
+cd $HOME
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
 bash Mambaforge-$(uname)-$(uname -m).sh
+rm -f Mambaforge-$(uname)-$(uname -m).sh
 
 
 # install nerd-fonts
