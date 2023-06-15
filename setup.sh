@@ -11,7 +11,6 @@ sudo apt install -y \
     alacritty \
     zsh \
     git \
-    neovim \
     tmux \
     stow \
     python3-dev \
