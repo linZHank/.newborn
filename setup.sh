@@ -1,8 +1,9 @@
 # download packages info and upgrade packages
-sudo add-apt-repository ppa:aslatter/ppa  # alacritty
-sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
+echo "package manager update finished."
 
 # install packages
+sudo add-apt-repository ppa:aslatter/ppa  # alacritty
 sudo apt install -y \
     curl \
     unzip \
@@ -18,52 +19,32 @@ sudo apt install -y \
     neofetch \
 
 
-# install pyenv
-# sudo apt install -y \
-#     libssl-dev \
-#     zlib1g-dev \
-#     libbz2-dev \
-#     libreadline-dev \
-#     libsqlite3-dev \
-#     wget \
-#     llvm \
-#     libncursesw5-dev \
-#     xz-utils \
-#     tk-dev \
-#     libxml2-dev \
-#     libxmlsec1-dev \
-#     libffi-dev \
-#     liblzma-dev
-# 
-# curl https://pyenv.run | bash
-
-
 # Install neovim
 sudo apt install -y \
     ninja-build \
     gettext \
-    libtool \
-    libtool-bin \
-    autoconf \
-    automake \
     cmake \
-    g++ \
-    pkg-config \
     unzip \
     curl \
-    doxygen \
-    lua5.4 \
-    luajit \
+    # libtool \
+    # libtool-bin \
+    # autoconf \
+    # automake \
+    # g++ \
+    # pkg-config \
+    # doxygen \
+    # lua5.4 \
+    # luajit \
     
 cd $HOME
 git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout v0.8.2
+git checkout release-0.9
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
 make install 
 export PATH="$HOME/.local/neovim/bin:$PATH"
 cd $HOME
-echo "end install neovim..."
+echo "neovim build finished."
 
 
 # install node version manager
@@ -71,12 +52,6 @@ curl -fsSL https://fnm.vercel.app/install | bash
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
 fnm install v16.14.0
-
-
-# install linting, formatting tools
-# pip install pip pyright flake8 black --upgrade # python
-# sudo apt install -y libxml2-utils tidy  # xml
-# npm install -g markdownlint-cli  # markdown
 
 
 # stow dotfiles
@@ -129,6 +104,32 @@ rm -f Mambaforge-$(uname)-$(uname -m).sh
 # add zsh as a login shell
 command -v zsh | sudo tee -a /etc/shells
 sudo chsh -s $(which zsh) $USER # use zsh as default shell
+
+
+# install pyenv
+# sudo apt install -y \
+#     libssl-dev \
+#     zlib1g-dev \
+#     libbz2-dev \
+#     libreadline-dev \
+#     libsqlite3-dev \
+#     wget \
+#     llvm \
+#     libncursesw5-dev \
+#     xz-utils \
+#     tk-dev \
+#     libxml2-dev \
+#     libxmlsec1-dev \
+#     libffi-dev \
+#     liblzma-dev
+# 
+# curl https://pyenv.run | bash
+
+
+# install linting, formatting tools
+# pip install pip pyright flake8 black --upgrade # python
+# sudo apt install -y libxml2-utils tidy  # xml
+# npm install -g markdownlint-cli  # markdown
 
 
 # restart computer
