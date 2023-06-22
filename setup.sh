@@ -25,35 +25,6 @@ sudo dnf install -y \
     htop \
 
 
-# install i3
-# sudo dnf install -y \
-#     i3 \
-#     rofi \
-#     nitrogen \
-#     # polybar
-
-
-# install gnome desktop
-# sudo dnf install -y \
-#     @base-x \
-#     gdm \ 
-#     gnome-shell \
-#     gnome-terminal \
-#     nautilus \
-#     gnome-terminal-nautilus \
-#     xdg-user-dirs \
-#     xdg-user-dirs-gtk \
-#     ffmpegthumbnailer
-    
-# sudo systemctl enable gdm # Enable login using graphical interface
-# sudo systemctl set-default graphical.target # Boot to graphical interface as default
-
-# Install Google-Chrome
-sudo dnf install -y fedora-workstation-repositories
-sudo dnf config-manager --set-enabled google-chrome
-sudo dnf install google-chrome-stable
-
-
 # install neovim
 echo "start install neovim..."
 cd $HOME
@@ -73,29 +44,14 @@ sudo dnf install -y \
     curl \
     wl-clipboard
     
+cd $HOME
 git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout v0.8.2
-make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
+git checkout v0.9.1
+make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/neovim
 make install 
 cd $HOME
-echo "end install neovim..."
-
-
-# install pyenv
-# sudo dnf install -y \
-#     zlib-devel \
-#     bzip2 \
-#     bzip2-devel \
-#     readline-devel \
-#     sqlite \
-#     sqlite-devel \
-#     openssl-devel \
-#     tk-devel \
-#     libffi-devel \
-#     xz-devel
-#     
-# curl https://pyenv.run | bash
+echo "End build neovim."
 
 
 # install node version manager
@@ -109,17 +65,6 @@ fnm install v16.14.0
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
 bash Mambaforge-$(uname)-$(uname -m).sh
 rm -f Mambaforge-$(uname)-$(uname -m).sh
-
-
-# install linting, formatting tools
-pip install pip --upgrade
-pip install pyright flake8 black --upgrade # python
-sudo apt install -y libxml2-utils tidy  # xml
-npm install -g markdownlint-cli  # markdown
-
-
-# install nvidia driver
-sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
 
 
 # stow dotfiles
@@ -139,17 +84,52 @@ command -v zsh | sudo tee -a /etc/shells # set zsh as login shell
 sudo dnf install -y util-linux-user
 sudo chsh -s $(which zsh) $USER
 
+
+# install nvidia driver
+sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+
+
 # install nerd-fonts
 mkdir -p $HOME/.local/share/fonts/NerdFonts/
 cd $HOME/.local/share/fonts/NerdFonts/
-curl -fLo "Hack BoldItalic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack BoldItalic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-curl -fLo "Hack Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack Bold Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-curl -fLo "Hack Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+curl -fLo "BigBlueTermPlus Nerd Font Regular.ttf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/BigBlueTerminal/BigBlueTermPlusNerdFont-Regular.ttf
+curl -fLo "BigBlueTermPlus Nerd Font Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/BigBlueTerminal/BigBlueTermPlusNerdFontMono-Regular.ttf
+curl -fLo "BigBlueTermPlus Nerd Font Propo.ttf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/BigBlueTerminal/BigBlueTermPlusNerdFontPropo-Regular.ttf
+fc-cache -f -v
+cd $HOME
+echo "Fonts downloaded."
+
+
+# install i3
+# sudo dnf install -y \
+#     i3 \
+#     rofi \
+#     nitrogen \
+#     # polybar
+
+
+# install linting, formatting tools
+# pip install pip --upgrade
+# pip install pyright flake8 black --upgrade # python
+# sudo apt install -y libxml2-utils tidy  # xml
+# npm install -g markdownlint-cli  # markdown
+
+
+# install pyenv
+# sudo dnf install -y \
+#     zlib-devel \
+#     bzip2 \
+#     bzip2-devel \
+#     readline-devel \
+#     sqlite \
+#     sqlite-devel \
+#     openssl-devel \
+#     tk-devel \
+#     libffi-devel \
+#     xz-devel
+#     
+# curl https://pyenv.run | bash
+
 
 # restart computer
 echo "you may now restart your computer"
