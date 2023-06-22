@@ -51,7 +51,7 @@ echo "neovim build finished."
 curl -fsSL https://fnm.vercel.app/install | bash
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
-fnm install v16.14.0
+fnm install v18.16.1
 
 
 # stow dotfiles

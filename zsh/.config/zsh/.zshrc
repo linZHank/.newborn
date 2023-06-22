@@ -85,3 +85,7 @@ export BROWSER="chrome"
 # swap escape and caps
 # setxkbmap -option caps:swapescape
 
+
+# fnm
+export PATH="/home/pbd0/.fnm:$PATH"
+eval "`fnm env`"
