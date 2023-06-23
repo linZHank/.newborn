@@ -1,6 +1,13 @@
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+vim.opt.colorcolumn = "80"
+vim.opt.linebreak = true
+vim.opt.termguicolors = true                    -- set term gui colors (most terminals support this)
+vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
+vim.opt.timeout = true
+vim.opt.timeoutlen = 500                        -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.updatetime = 300                        -- faster completion (4000ms default)
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.undofile = true                         -- enable persistent undo
 vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
@@ -24,7 +31,6 @@ vim.opt.expandtab = true                        -- convert tabs to spaces
 vim.opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
 vim.opt.cursorline = true                       -- highlight the current line
-vim.opt.colorcolumn = "80"
 vim.opt.laststatus = 3                          -- only the last window will always have a status line
 vim.opt.showcmd = false                         -- hide (partial) command in the last line of the screen (for performance)
 vim.opt.ruler = false                           -- hide the line and column number of the cursor position
@@ -38,8 +44,3 @@ vim.opt.shortmess:append "c"                    -- hide all the completion messa
 vim.opt.whichwrap:append("<,>,[,],h,l")         -- keys allowed to move to the previous/next line when the beginning/end of line is reached
 vim.opt.iskeyword:append("-")                   -- treats words with `-` as single words
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- This is a sequence of letters which describes how automatic formatting is to be done
-vim.opt.linebreak = true
-vim.opt.termguicolors = true                    -- set term gui colors (most terminals support this)
-vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
-vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.updatetime = 300                        -- faster completion (4000ms default)
