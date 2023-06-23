@@ -81,8 +81,9 @@ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/
 sudo dpkg -i cuda-keyring_1.0-1_all.deb
 sudo apt update
 # wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/nvidia-driver-515_515.48.07-0ubuntu1_amd64.deb
+# sudo apt install -y ./nvidia-driver-515_515.48.07-0ubuntu1_amd64.deb
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/nvidia-driver-530_530.30.02-0ubuntu1_amd64.deb
-sudo apt install -y ./nvidia-driver-515_515.48.07-0ubuntu1_amd64.deb
+sudo apt install -y ./nvidia-driver-530_530.30.02-0ubuntu1_amd64.deb
 
 
 # install nerd-fonts
