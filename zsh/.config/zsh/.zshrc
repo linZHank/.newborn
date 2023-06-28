@@ -89,3 +89,11 @@ export BROWSER="chrome"
 # fnm
 export PATH="/home/pbd0/.fnm:$PATH"
 eval "`fnm env`"
+
+# fnm
+export PATH="/home/pbd0/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+# fnm
+export PATH="/home/pbd0/.local/share/fnm:$PATH"
+eval "`fnm env`"
