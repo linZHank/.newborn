@@ -47,7 +47,7 @@ sudo dnf install -y \
 cd $HOME
 git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout v0.9.1
+git checkout v0.9.4
 make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/neovim
 make install 
 cd $HOME
@@ -75,8 +75,6 @@ stow nvim
 stow git
 stow tmux
 stow git
-# stow i3
-# stow x
 
 
 # use zsh as default shell
@@ -98,37 +96,6 @@ curl -fLo "BigBlueTermPlus Nerd Font Propo.ttf" https://github.com/ryanoasis/ner
 fc-cache -f -v
 cd $HOME
 echo "Fonts downloaded."
-
-
-# install i3
-# sudo dnf install -y \
-#     i3 \
-#     rofi \
-#     nitrogen \
-#     # polybar
-
-
-# install linting, formatting tools
-# pip install pip --upgrade
-# pip install pyright flake8 black --upgrade # python
-# sudo apt install -y libxml2-utils tidy  # xml
-# npm install -g markdownlint-cli  # markdown
-
-
-# install pyenv
-# sudo dnf install -y \
-#     zlib-devel \
-#     bzip2 \
-#     bzip2-devel \
-#     readline-devel \
-#     sqlite \
-#     sqlite-devel \
-#     openssl-devel \
-#     tk-devel \
-#     libffi-devel \
-#     xz-devel
-#     
-# curl https://pyenv.run | bash
 
 
 # restart computer
