@@ -20,5 +20,6 @@ spec "pbd0.gitsigns"
 spec "pbd0.alpha"
 spec "pbd0.telescope"
 spec "pbd0.telescope-tabs"
+spec "pbd0.tmuxnav"
 require "pbd0.lazy"
 
