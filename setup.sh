@@ -42,6 +42,8 @@ sudo dnf install -y \
     patch \
     gettext \
     curl \
+    xclip \
+    xsel \
     wl-clipboard
     
 cd $HOME
