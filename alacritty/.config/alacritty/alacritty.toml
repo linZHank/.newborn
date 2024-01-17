@@ -3,7 +3,8 @@ program = "/usr/bin/zsh"
 
 [window]
 padding = {x = 2, y = 2}
-opacity = 0.64
+decorations = "None"
+opacity = 0.7
 blur = true
 startup_mode = "Maximized"
 
