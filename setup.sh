@@ -1,89 +1,58 @@
 # download packages info and upgrade packages
-sudo apt update
-sudo apt upgrade
-
+sudo apt update && sudo apt upgrade -y
+echo "package manager update finished."
 
 # install packages
+# sudo add-apt-repository ppa:aslatter/ppa  # alacritty
 sudo apt install -y \
     curl \
     unzip \
     make \
     build-essential \
-    zsh \
-    git \
-    neofetch \
-    tmux \
-    stow \
     python3-dev \
     python3-pip \
+    zsh \
+    git \
+    tmux \
+    stow \
+    neofetch \
+    htop \
+
+
+# install mamba-forge
+cd $HOME
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh
+rm -f Mambaforge-$(uname)-$(uname -m).sh
 
 
 # Install neovim
 sudo apt install -y \
     ninja-build \
     gettext \
-    libtool \
-    libtool-bin \
-    autoconf \
-    automake \
     cmake \
-    g++ \
-    pkg-config \
     unzip \
     curl \
-    doxygen \
-    lua5.4 \
-    luajit \
-    
+    xclip \
+    xsel \
+    ripgrep \
+
 cd $HOME
-git clone https://github.com/neovim/neovim
+git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout v0.8.2
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
-make install
+git checkout release-0.9.4
+make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
+make install 
 export PATH="$HOME/.local/neovim/bin:$PATH"
-
-
-# install pyenv
-sudo apt install -y \
-    libssl-dev \
-    zlib1g-dev \
-    libbz2-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    wget \
-    llvm \
-    libncursesw5-dev \
-    xz-utils \
-    tk-dev \
-    libxml2-dev \
-    libxmlsec1-dev \
-    libffi-dev \
-    liblzma-dev \
-    
-curl https://pyenv.run | bash
+cd $HOME
+echo "neovim build finished."
 
 
 # install node version manager
 curl -fsSL https://fnm.vercel.app/install | bash
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --use-on-cd)"
-fnm install v16.14.0
-
-
-# install linting, formatting tools
-pip install pip pyright flake8 black --upgrade # python
-sudo apt install -y libxml2-utils tidy  # xml
-npm install -g markdownlint-cli  # markdown
-
-
-# stow dotfiles
-cd $HOME/.newborn
-stow zsh
-stow nvim
-stow git
-stow tmux
-# stow x
+fnm install v18.16.1
 
 
 # install ros-humble, comment next block if ros not wanted
@@ -97,20 +66,32 @@ sudo apt install -y ros-humble-ros-base python3-colcon-common-extensions
 # install nerd-fonts
 mkdir -p $HOME/.local/share/fonts/NerdFonts/
 cd $HOME/.local/share/fonts/NerdFonts/
-curl -fLo "Hack BoldItalic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack BoldItalic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-curl -fLo "Hack Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack Bold Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-curl -fLo "Hack Italic Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-curl -fLo "Hack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
-curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+curl -fLo "Terminess Nerd Font BoldItalic.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Bold-Italic/TerminessNerdFont-BoldItalic.ttf
+curl -fLo "Terminess Nerd Font Mono BoldItalic.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Bold-Italic/TerminessNerdFontMono-BoldItalic.ttf
+curl -fLo "Terminess Nerd Font Propo BoldItalic.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Bold-Italic/TerminessNerdFontPropo-BoldItalic.ttf
+curl -fLo "Terminess Nerd Font Bold.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Bold/TerminessNerdFont-Bold.ttf
+curl -fLo "Terminess Nerd Font Mono Bold.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Bold/TerminessNerdFontMono-Bold.ttf
+curl -fLo "Terminess Nerd Font Propo Bold.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Bold/TerminessNerdFontPropo-Bold.ttf
+curl -fLo "Terminess Nerd Font Italic.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Italic/TerminessNerdFont-Italic.ttf
+curl -fLo "Terminess Nerd Font Mono Italic.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Italic/TerminessNerdFontMono-Italic.ttf
+curl -fLo "Terminess Nerd Font Propo Italic.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Italic/TerminessNerdFontPropo-Italic.ttf
+curl -fLo "Terminess Nerd Font Regular.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Regular/TerminessNerdFont-Regular.ttf
+curl -fLo "Terminess Nerd Font Mono Regular.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Regular/TerminessNerdFontMono-Regular.ttf
+curl -fLo "Terminess Nerd Font Propo Regular.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Terminus/Regular/TerminessNerdFontPropo-Regular.ttf
+fc-cache -f -v
 
 
-# install conda
+# install tmux package manager
 cd $HOME
-curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
-bash Mambaforge-$(uname)-$(uname -m).sh
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
+
+# stow dotfiles
+cd $HOME/.newborn
+stow zsh
+stow nvim
+stow git
+stow tmux
 
 
 # add zsh as a login shell
