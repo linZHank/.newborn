@@ -68,6 +68,9 @@ curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Ma
 bash Mambaforge-$(uname)-$(uname -m).sh
 rm -f Mambaforge-$(uname)-$(uname -m).sh
 
+# install tmux package manager
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
 
 # stow dotfiles
 cd $HOME/.newborn
