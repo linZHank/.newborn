@@ -1,6 +1,9 @@
 local keymap = vim.keymap.set  -- shorten function name
 local opts = { noremap = true, silent = true }  
 
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "  -- remap space as leader key
 vim.g.maplocalleader = " "
