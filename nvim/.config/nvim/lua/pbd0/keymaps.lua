@@ -39,7 +39,7 @@ keymap("v", ">", ">gv", opts)
 -- Diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = '[S]how [D]iagnostic error messages' })
+vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
