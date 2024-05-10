@@ -11,7 +11,7 @@ M.config = function()
     signs = {
       add = {
         hl = "GitSignsAdd",
-        text = icons.ui.BoldLineLeft,
+        text = icons.ui.Plus,
         numhl = "GitSignsAddNr",
         linehl = "GitSignsAddLn",
       },
@@ -23,7 +23,7 @@ M.config = function()
       },
       delete = {
         hl = "GitSignsDelete",
-        text = icons.ui.TriangleShortArrowRight,
+        text = icons.ui.BoldClose,
         numhl = "GitSignsDeleteNr",
         linehl = "GitSignsDeleteLn",
       },
