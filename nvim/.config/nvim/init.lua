@@ -1,5 +1,7 @@
+-- Disable netrw because fo nvimtree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
 require "pbd0.launch"
 require "pbd0.options"
 require "pbd0.keymaps"
