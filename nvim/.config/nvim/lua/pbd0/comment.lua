@@ -6,13 +6,26 @@ local M = {
 }
 
 function M.config()
+  local wk = require "which-key"
+  wk.register {
+    ["<leader>c"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
+  }
+
+  wk.register {
+    ["<leader>c"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
+  }
+
+  vim.g.skip_ts_context_commentstring_module = true
+  ---@diagnostic disable: missing-fields
+  require("ts_context_commentstring").setup {
+    enable_autocmd = false,
+  }
+
   require("Comment").setup {
     ---Add a space b/w comment and the line
     padding = true,
     ---Whether the cursor should stay at its position
     sticky = true,
-    ---Lines to be ignored while (un)comment
-    ignore = nil,
     ---LHS of toggle mappings in NORMAL mode
     toggler = {
       ---Line-comment toggle keymap
@@ -45,15 +58,10 @@ function M.config()
       extra = true,
     },
     ---Function to call before (un)comment
-    pre_hook = function(...)
-      local loaded, ts_comment = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
-      if loaded and ts_comment then
-        return ts_comment.create_pre_hook()(...)
-      end
-    end,
     ---Function to call after (un)comment
-    post_hook = nil,
+    -- post_hook = nil,
   }
 end
 
 return M
+
