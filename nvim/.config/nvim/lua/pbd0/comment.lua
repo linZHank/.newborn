@@ -15,12 +15,7 @@ function M.config()
     ["<leader>c"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
   }
 
-  vim.g.skip_ts_context_commentstring_module = true
   ---@diagnostic disable: missing-fields
-  require("ts_context_commentstring").setup {
-    enable_autocmd = false,
-  }
-
   require("Comment").setup {
     ---Add a space b/w comment and the line
     padding = true,
