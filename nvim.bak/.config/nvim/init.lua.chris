@@ -1,0 +1,28 @@
+-- Disable netrw because fo nvimtree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+require "pbd0.launch"
+require "pbd0.options"
+require "pbd0.keymaps"
+require "pbd0.autocmds"
+spec "pbd0.colorscheme"
+spec "pbd0.treesitter"
+spec "pbd0.cmp"
+spec "pbd0.whichkey"
+spec "pbd0.comment"
+spec "pbd0.autopairs"
+spec "pbd0.nvimtree"
+spec "pbd0.mason"
+spec "pbd0.lspconfig"
+spec "pbd0.schemastore"
+spec "pbd0.bufferline"
+spec "pbd0.lualine"
+spec "pbd0.indentline"
+spec "pbd0.gitsigns"
+spec "pbd0.alpha"
+spec "pbd0.telescope"
+spec "pbd0.telescope-tabs"
+spec "pbd0.tmuxnav"
+require "pbd0.lazy"
+
