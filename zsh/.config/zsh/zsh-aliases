@@ -60,3 +60,5 @@ alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
   # alias ssh="kitty +kitten ssh"
 # fi
 
+# esp-idf
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
