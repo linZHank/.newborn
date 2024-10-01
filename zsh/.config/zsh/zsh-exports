@@ -43,3 +43,7 @@ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 export LC_NUMERIC="en_US.UTF-8"
 eval "$(register-python-argcomplete3 ros2)"
 eval "$(register-python-argcomplete3 colcon)"
+export ISAAC_ROS_WS=/home/pbd0/isaac_ros_ws/
+source /opt/ros/humble/setup.zsh
+source $HOME/isaac_ros_ws/install/local_setup.zsh
+export ROS_DOMAIN_ID=102
