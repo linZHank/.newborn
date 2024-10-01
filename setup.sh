@@ -3,18 +3,15 @@ sudo apt update && sudo apt upgrade -y
 echo "package manager update finished."
 
 # install packages
-sudo add-apt-repository ppa:aslatter/ppa # alacritty
 sudo apt install -y \
   make \
   python3-dev \
   python3-pip \
-  alacritty \
   zsh \
   git \
   tmux \
   stow \
   neofetch \
-  htop
 
 # Install neovim
 echo "Start building neovim"
@@ -53,29 +50,12 @@ fnm install v18.16.1
 
 # stow dotfiles
 cd $HOME/.newborn
-stow alacritty
 stow zsh
 stow git
 stow tmux
 # setup lazyvim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
-
-# install ros-jazzy, comment next block if ros not wanted
-sudo apt install -y gnupg lsb-release
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
-sudo apt update && sudo apt install ros-dev-tools
-sudo apt install -y ros-jazzy-ros-base python3-colcon-common-extensions
-
-# install nvidia driver
-cd $HOME/Downloads
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb
-sudo dpkg -i cuda-keyring_1.0-1_all.deb
-sudo apt update
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/nvidia-driver-560_560.35.03-0ubuntu1_amd64.deb
-sudo apt install -y ./nvidia-driver-560_560.35.03-0ubuntu1_amd64.deb
-cd $HOME
 
 # install nerd-fonts
 mkdir -p $HOME/.local/share/fonts/NerdFonts/
