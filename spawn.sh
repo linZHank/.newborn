@@ -22,7 +22,7 @@ sudo apt install -y \
 ./install_ros.sh
 ./install_lazygit.sh
 ./install_miniforge.sh
-./install_nvidia_driver.sh
+# ./install_nvidia_driver.sh
 ./setup_zsh.sh
 ./sync_configs.sh
 
