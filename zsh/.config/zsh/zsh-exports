@@ -5,32 +5,25 @@ SAVEHIST=1000000
 export PATH="$HOME/.local/bin":$PATH
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
-# export PATH=$HOME/.cargo/bin:$PATH
-# export PATH=$HOME/.local/share/go/bin:$PATH
-# export GOPATH=$HOME/.local/share/go
-# export PATH="$PATH:./node_modules/.bin"
-# eval "$(zoxide init zsh)"
-# eval "`pip completion --zsh`"
-
-# fnm
-export PATH=$HOME/.local/share/fnm:$PATH
-eval "$(fnm env)"
-
-# pyenv
-# export PYENV_ROOT="$HOME/.pyenv" 
-# export PATH="$PYENV_ROOT/bin:$PATH" 
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
 
 # Neovim
 export PATH="$HOME/.local/neovim/bin:$PATH"
 
+# fnm
+export PATH=$HOME/.local/share/fnm:$PATH
+eval "$(fnm env --use-on-cd --shell zsh)"
+# export PATH="$PATH:./node_modules/.bin"
+
+
+# GO
+# export PATH=$HOME/.cargo/bin:$PATH
+# export PATH=$HOME/.local/share/go/bin:$PATH
+# export GOPATH=$HOME/.local/share/go
 
 # tensorflow
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
 
-# ROS Humble
+# ROS
 # source /opt/ros/humble/setup.zsh
 # export ROS_DOMAIN_ID=19
 # source /usr/share/colcon_cd/function/colcon_cd.sh
@@ -60,3 +53,5 @@ if [ -f "/home/pbd0/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+# PIP
+# eval "`pip completion --zsh`"
