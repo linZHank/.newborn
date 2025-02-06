@@ -42,3 +42,11 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 background-opacity = 0.64
+font-family = "Martian Mono"
+font-size = 14
+adjust-cell-height = 20%
+window-decoration = "none"
+
+# Colorscheme
+theme = "Neutron"
+
