@@ -78,7 +78,7 @@ autoload edit-command-line; zle -N edit-command-line
 
 # Environment variables set everywhere
 export EDITOR="nvim"
-export TERMINAL="gnome-terminal"
+export TERMINAL="alarcritty"
 export BROWSER="chrome"
 
 # For QT Themes

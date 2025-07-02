@@ -20,19 +20,3 @@ pyenv shell 3.10.2
 pip install matplotlib
 pyenv shell 3.10.2
 pip install h5py
-mamba activate la
-python
-cd playground/lite_agents
-mamba activate la
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-python -i tests/cartpole_vpg.py
-shutdown now
-sudo shutdown now
-sudo shutdown -h now

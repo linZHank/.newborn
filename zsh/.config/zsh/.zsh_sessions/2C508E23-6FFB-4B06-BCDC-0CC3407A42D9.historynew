@@ -1,0 +1,1 @@
+mv .newborn/alacritty/.config/alacritty/alacritty.toml .newborn/alacritty/.config/alacritty/alacritty.toml.bak
