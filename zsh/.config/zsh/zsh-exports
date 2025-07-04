@@ -2,56 +2,30 @@
 # HISTFILE="$XDG_DATA_HOME"/zsh/history
 HISTSIZE=1000000
 SAVEHIST=1000000
-export PATH="$HOME/.local/bin":$PATH
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
-
-# Neovim
-export PATH="$HOME/.local/neovim/bin:$PATH"
-
-# fnm
-export PATH=$HOME/.local/share/fnm:$PATH
-eval "$(fnm env --use-on-cd --shell zsh)"
-# export PATH="$PATH:./node_modules/.bin"
-
-
-# GO
 # export PATH=$HOME/.cargo/bin:$PATH
 # export PATH=$HOME/.local/share/go/bin:$PATH
 # export GOPATH=$HOME/.local/share/go
+# export PATH="$PATH:./node_modules/.bin"
+# eval "$(zoxide init zsh)"
+# eval "`pip completion --zsh`"
 
-# tensorflow
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+# Local apps paths
+export PATH="$HOME/.local/bin:$PATH"
 
-# ROS
-# source /opt/ros/humble/setup.zsh
+# uv
+eval "$(uv generate-shell-completion zsh)"
+
+# fnm
+# export PATH=$HOME/.local/share/fnm:$PATH
+# eval "$(fnm env)"
+
+# ROS Jazzy
+# source $HOME/ros/jazzy/install/setup.zsh
 # export ROS_DOMAIN_ID=19
-# source /usr/share/colcon_cd/function/colcon_cd.sh
-# export _colcon_cd_root=/opt/ros/humble/
 # source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 # export LC_NUMERIC="en_US.UTF-8"
-# eval "$(register-python-argcomplete3 ros2)"
+# eval "$(register-python-argcomplete ros2)"
 # eval "$(register-python-argcomplete colcon)"
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pbd0/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/pbd0/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/pbd0/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/pbd0/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/home/pbd0/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/pbd0/miniforge3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-# PIP
-# eval "`pip completion --zsh`"

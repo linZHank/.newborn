@@ -61,4 +61,4 @@ alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
 # fi
 
 # esp-idf
-alias get_idf='. $HOME/esp/esp-idf/export.sh'
+alias idfgo=". $HOME/espressif/esp-idf/export.sh"
