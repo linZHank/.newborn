@@ -1,6 +1,6 @@
 # Usage
-```shell
-git clone https://github.com/linzhanguca/.newborn.git
+```bash
+git clone https://github.com/linzhank/.newborn.git
 cd .newborn
 ./spawn.sh
 ```
