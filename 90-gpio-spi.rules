@@ -1,4 +1,0 @@
-KERNEL=="gpiomem", OWNER="root", GROUP="gpio" 
-KERNEL=="spidev0.0", OWNER="root", GROUP="spi" 
-KERNEL=="spidev0.1", OWNER="root", GROUP="spi"
-KERNEL=="ttyUSB*", MODE="0666"    
