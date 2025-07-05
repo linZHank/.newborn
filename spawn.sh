@@ -9,6 +9,7 @@
 ./setup_tmux.sh
 ./setup_neovim.sh
 ./setup_uv.sh
+./setup_fnm.sh
 ./setup_zsh.sh
 
 # restart computer

@@ -44,7 +44,7 @@
 background-opacity = 0.64
 background-blur = true
 font-family = "Martian Mono"
-font-size = 16
+font-size = 14
 adjust-cell-height = 20%
 window-decoration = "none"
 maximize

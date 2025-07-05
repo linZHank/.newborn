@@ -18,7 +18,7 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
-# compinit
+compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 autoload -U up-line-or-beginning-search
@@ -90,4 +90,5 @@ export BROWSER="chrome"
 # setxkbmap -option caps:swapescape
 
 fastfetch
+
 

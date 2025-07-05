@@ -18,8 +18,11 @@ export PATH="$HOME/.local/bin:$PATH"
 eval "$(uv generate-shell-completion zsh)"
 
 # fnm
-# export PATH=$HOME/.local/share/fnm:$PATH
-# eval "$(fnm env)"
+FNM_PATH="/home/pbd0/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
 # ROS Jazzy
 # source $HOME/ros/jazzy/install/setup.zsh
